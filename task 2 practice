@@ -1,0 +1,105 @@
+#storing and printing different types of data types 
+#converting data types 
+# a = 50
+# b =str(a)
+# c = "dev"
+
+# print(b)
+# print(type(a))
+# print(type(b))
+# print(type(c))
+# print(c.isnumeric())
+# print(c.isalpha())
+
+# print(ord(d))
+#char = "b"
+#print(ord(char))
+#new_char = ord(char)+1
+#print(chr(new_char))
+"""def validate():
+    while True:
+        uinput = input("Enter the valid number:")
+        if uinput.replace('.', '', 1).isdigit() or (uinput.startswith('-') and uinput[1:].replace('.', '', 1).isdigit()):
+            return float(uinput)  
+        else:
+            print("Please enter a valid number.")"""
+"""def addition ():
+    #a=validate()
+    #b=validate()
+    #c=a+b
+    #print(c,type(c))
+addition()"""
+
+"""def age():
+    n = int(input("Enter your age : "))
+    if n>0 and n<=12:
+        print("Child")
+    elif n>12 and n<20:
+        print("Teenager")
+    elif n>=20:
+        print("Adult")
+age()"""
+"""def checknumber():
+    n = int(input("Enter the number : "))
+    if n < 0:
+        print("Negative")
+    elif n == 0 :
+        print("Zero")
+    elif n > 0:
+        print("Positive")
+checknumber()"""
+"""def checkyear():
+    try:
+        year = int(input("Enter a year: "))
+        if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+            print(f"{year} is a leap year.")
+        else:
+            print(f"{year} is not a leap year.")
+    except ValueError :
+        print("Invalid input. Please enter a valid integer for the year.")
+checkyear()"""
+"""def PassFail():
+    try:
+        score = float(input("Enter your exam score (0-100): "))
+        if score < 0 or score > 100:
+            print("Invalid Score")
+        else:
+            if score >= 75:
+                print("Distinction")
+            elif score >= 50:
+                print("Pass")
+            else:
+                print("Fail")
+    except ValueError:
+        print("Invalid input.")
+PassFail()"""
+
+
+"""def calculator():
+    n1 = float(input("Enter the first number: "))
+    n2 = float(input("Enter the second number: "))
+    print(f"Addition: {n1} + {n2} = {n1 + n2}")
+    print(f"Subtraction: {n1} - {n2} = {n1 - n2}")
+    print(f"Multiplication: {n1} * {n2} = {n1 * n2}")
+    if n2 != 0:
+        print(f"Division: {n1} / {n2} = {n1 / n2}")
+        print(f"Modulus: {n1} % {n2} = {n1 % n2}")
+    else:
+        print(f"Exponentiation: {n1} ** {n2} = {n1 ** n2}")
+calculator()"""
+"""def checklist():
+    list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    find = float(input("Enter a number to check: "))
+    if find in list:
+        print(f"{num} exists in the list.")
+    else:
+        print(f"{num} does not exist in the list.")"""
+"""def practice():
+    a = 10
+    b = 10
+    c = [1, 2, 3]
+    d = [1, 2, 3]
+    print(a is b) 
+    print(a is not b)   
+    print(c is not d) 
+practice()"""  
