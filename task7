@@ -1,0 +1,42 @@
+#question 1
+class ReverseIterator:
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.index <= 0:
+            raise StopIteration
+        self.index -= 1
+        return self.data[self.index]
+
+l= [1, 2, 3, 4, 5]
+rev = ReverseIterator(l)
+
+for val in rev:
+    print(val)
+#Question 2
+def even(n):
+    for i in range(n):
+        if i % 2 == 0:
+            yield i
+
+print("Even numbers are:")
+for num in even(10):
+    print(num)
+#question 3
+def copy_content(source, destination):
+    try:
+        with open(source, 'r') as src, open(destination, 'w') as dest:
+            content = src.read().strip().upper()
+            dest.write(content)
+        print(f"Content copied successfully from '{source}' to '{destination}' in uppercase.")
+    except FileNotFoundError:
+        print(f"Error: The file '{source}' was not found.")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+
+copy_content('source.txt', 'destination.txt')
