@@ -1,0 +1,30 @@
+import csv
+import os
+import requests
+import re
+
+
+url = "https://finance.yahoo.com/quote/BTC-USD/"
+headers = {'User-Agent': 'Mozilla/5.0'}
+response = requests.get(url, headers=headers)
+
+
+match = re.search(r'"regularMarketPrice":{"raw":([\d.]+)', response.text)
+
+if match:
+    price = match.group(1)
+    print(f"Current Bitcoin Price: ${price}")
+    file_path = 'crypto_prices.csv'
+    file_exists = os.path.exists(file_path)
+    with open(file_path, 'a', newline='') as file:
+        writer = csv.writer(file)
+        if not file_exists:
+            writer.writerow(['Cryptocurrency', 'Price'])  # Write header only once
+        writer.writerow(['Bitcoin (BTC-USD)', price])
+else:
+    print("Bitcoin price not found.")
+
+
+print("Current directory is:", os.getcwd())
+print("All files in current directory:", os.listdir(os.getcwd()))
+print("Is current path a directory?", os.path.isdir('.'))
