@@ -1,0 +1,13 @@
+CREATE PROCEDURE UpdateProductStock(IN product_id INT, IN quantity_sold INT)
+BEGIN
+    -- Update stock quantity
+    UPDATE products 
+    SET stock_quantity = stock_quantity - quantity_sold 
+    WHERE id = product_id;
+
+    -- Insert alert if stock falls below 5
+    IF (SELECT stock_quantity FROM products WHERE id = product_id) < 5 THEN
+        INSERT INTO low_stock_alerts (product_id, alert_time) 
+        VALUES (product_id, NOW());
+    END IF;
+END
