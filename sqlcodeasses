@@ -1,13 +1,17 @@
 CREATE PROCEDURE GetEmployeeCount()
 BEGIN
-    SELECT DISTINCT(COUNT(*)) AS Employee_Count FROM employees;
+    SELECT COUNT(*) AS Employee_Count FROM employees;
 END
 CREATE PROCEDURE GetOrdersByCustomer(IN customer_id INT)
 BEGIN
+    IF EXISTS (SELECT id FROM customers where id = customer_id) THEN
     SELECT * FROM orders WHERE orders.customer_id = customer_id;
+    End IF ;
 END
 CREATE PROCEDURE UpdateProductStock(IN product_id INT, IN quantity_sold INT)
 BEGIN
+    IF EXISTS (select id from products where id = product_id) THEN
+    IF(select stock_quantity from products where id = product_id) > quantity_sold THEN 
     UPDATE products 
     SET products.stock_quantity = stock_quantity - quantity_sold 
     WHERE id = product_id;
@@ -15,5 +19,7 @@ BEGIN
     IF (SELECT stock_quantity FROM products WHERE id = product_id) < 5 THEN
         INSERT INTO low_stock_alerts (product_id, alert_time)
         VALUES (product_id, NOW());
+    END IF;
+    END IF;
     END IF;
 END
